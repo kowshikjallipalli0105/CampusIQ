@@ -125,8 +125,8 @@ The Attendance System is a modern, AI-powered solution that automates classroom 
 #### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/s79-attendance-system.git
-cd s79-attendance-system
+git clone https://github.com/kowshikjallipalli0105/CampusIQ.git
+cd CampusIQ
 ```
 
 #### 2. Backend Setup
