@@ -202,7 +202,7 @@ npm run dev
 
 1. **Login** with provided credentials
 2. **Change Password** on first login
-3. View attendance records (future feature)
+3. View attendance records 
 
 
 ## 📁 Project Structure
