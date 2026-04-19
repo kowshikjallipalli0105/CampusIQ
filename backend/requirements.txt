@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+sqlalchemy
+python-multipart
+python-jose[cryptography]
+passlib[bcrypt]
+tensorflow
+mtcnn
+opencv-python-headless
+numpy
+scipy
+pandas
+openpyxl
+deepface
+tf-keras
+python-dotenv

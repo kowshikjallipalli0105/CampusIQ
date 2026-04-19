@@ -1,0 +1,105 @@
+Product Requirements Document
+Project Title: Attendance System Using Face Recognition with Multi-Face Detection
+
+1. Product Overview
+   The Attendance System Using Face Recognition with Multi-Face Detection is an AI-powered solution designed to automate and digitize classroom attendance using facial recognition technology. The system enables accurate, contactless attendance marking by detecting and recognizing multiple student faces simultaneously from live video feeds or uploaded images. It supports structured user roles (Admin, Faculty, Student) and maintains a secure, centralized attendance database. The solution is intended for academic institutions seeking to reduce manual effort, prevent proxy attendance, and improve operational efficiency.
+
+2. Problem Statement
+   Traditional attendance systems rely on manual roll calls or biometric hardware, which are time-consuming, prone to human error, and vulnerable to misuse. In large classrooms, maintaining accurate attendance becomes challenging. There is a need for a scalable, automated, and reliable attendance mechanism that can handle multiple students in real time, integrate seamlessly with existing classroom setups, and ensure data integrity without requiring specialized hardware.
+
+3. Goals and Objectives
+   The primary goal is to design and implement an automated attendance system that uses facial recognition to mark student attendance accurately. Key objectives include enabling secure student enrollment, supporting multi-face detection in real-time classroom environments, providing role-based access control, maintaining detailed attendance records, and generating downloadable attendance reports for academic use.
+
+4. Scope of the System
+   The system will cover student enrollment, facial data processing, attendance marking, role-based user management, and reporting. It will operate as a web-based application with backend AI/ML processing. Deployment as a hosted website is optional and may be handled separately. Hardware integration is limited to webcams or existing CCTV footage provided as input streams.
+
+5. Functional Requirements
+   The system shall provide three user roles: Admin, Faculty, and Student.
+   The Admin shall be able to create user accounts, assign roles, create academic sections, and map students to sections.
+   Students shall receive initial credentials from the Admin and be able to change their passwords upon first login.
+   Faculty users shall be able to initiate attendance sessions by providing class and section details, triggering face recognition on the corresponding video feed.
+   The system shall support student enrollment through either live webcam capture or image upload, capturing sufficient facial data for embedding generation.
+   During attendance marking, the system shall detect multiple faces, recognize enrolled students, mark attendance, and identify unknown faces.
+   Attendance data shall be stored persistently with timestamps, confidence scores, and status indicators.
+   The system shall allow generation and download of attendance reports in CSV or Excel format.
+
+6. Non-Functional Requirements
+   The system shall provide real-time processing with minimal latency during live attendance sessions.
+   Recognition accuracy shall meet or exceed the defined similarity threshold of 0.70.
+   The system shall be modular, maintainable, and extensible.
+   User data and embeddings shall be stored securely.
+   The application shall be compatible with modern web browsers.
+   The system shall be designed for small to medium-scale institutional usage during the initial phase.
+
+7. System Architecture Overview
+   The architecture follows a client-server model. The frontend handles user interaction, webcam access, and visualization. The backend manages authentication, face detection, embedding generation, similarity matching, and database operations. AI/ML processing is handled server-side using Python-based libraries. SQLite is used as the primary datastore during development.
+
+8. Data Sources and Datasets
+   The system does not rely on a pre-existing public dataset. A custom dataset is created dynamically during the enrollment phase. Each enrolled student contributes a set of face images captured via webcam or uploaded manually. These images are processed to generate and store facial embeddings, while raw images are not retained.
+
+9. AI/ML Models and Algorithms
+   Face detection is performed using MTCNN to locate multiple faces within images or video frames.
+   Face recognition is implemented using FaceNet (Inception-ResNet-v1) to generate 512-dimensional face embeddings.
+   Cosine similarity is used to compare live embeddings with stored embeddings.
+   A similarity threshold of 0.70 determines recognition success.
+   Attendance status is derived based on similarity results.
+
+10. Third-Party Integrations
+    The system integrates WebRTC for webcam access on the frontend.
+    Canvas API is used for frame capture.
+    Backend processing relies on MTCNN, Keras-FaceNet, OpenCV, NumPy, and SciPy libraries.
+    No external cloud-based AI services are required.
+
+11. User Experience Flow
+    Users authenticate based on their assigned role.
+    Admins manage system configuration and user setup.
+    Students enroll their facial data during the enrollment phase.
+    Faculty initiate attendance sessions by selecting class and section details.
+    The system processes video or images, displays recognition results visually, and stores attendance data automatically.
+
+12. Alerting and Notification Logic
+    The system shall display real-time visual indicators for recognized and unrecognized faces.
+    Success and failure messages shall be shown during enrollment and attendance marking.
+    No external notification services are included in the current scope.
+
+13. Analytics and Reporting
+    The system shall provide attendance summaries per session.
+    Reports shall include student identifiers, date, time, attendance status, and confidence scores.
+    Reports shall be downloadable in CSV or Excel formats for academic record-keeping.
+
+14. Security and Privacy Considerations
+    User authentication and role-based authorization shall be enforced.
+    Passwords shall be stored securely using hashing.
+    Only face embeddings, not raw facial images, shall be stored to reduce privacy risks.
+    Access to attendance data shall be restricted based on user roles.
+
+15. Deployment Strategy
+    Initial deployment will be local or institution-hosted.
+    Web deployment is optional and may incur additional costs.
+    The system shall be packaged to allow future migration to cloud infrastructure if required.
+
+16. Assumptions and Constraints
+    The system assumes adequate lighting and camera quality for face detection.
+    Only one enrollment and attendance option will be finalized during development.
+    System performance is constrained by available hardware resources.
+    CCTV feed integration assumes accessible video streams.
+
+17. Success Metrics
+    Face recognition accuracy above the defined threshold.
+    Reduction in manual attendance time.
+    Successful enrollment and attendance marking without system failures.
+    Positive feedback from faculty and administrators.
+
+18. Risks and Mitigation
+    Poor lighting or occlusions may reduce accuracy; mitigation includes proper camera placement guidelines.
+    Scalability limitations of SQLite may arise; future migration to a robust database is planned.
+    Privacy concerns are mitigated by storing embeddings instead of images.
+
+19. Future Enhancements
+    Integration with cloud databases and storage.
+    Advanced analytics dashboards.
+    Mobile application support.
+    Support for additional recognition models and adaptive thresholds.
+
+20. Conclusion
+    The Attendance System Using Face Recognition with Multi-Face Detection provides a robust, AI-driven solution for automating attendance in academic environments. By combining reliable facial recognition algorithms with a structured role-based workflow, the system addresses operational inefficiencies while maintaining data accuracy and security. The proposed design is implementation-ready and suitable for academic and institutional deployment.
